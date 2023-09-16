@@ -8,11 +8,12 @@ import { UserEntity } from './users/entities/user.entity';
 import { PostsModule } from './posts/posts.module';
 import { PostEntity } from './posts/entities/post.entity';
 import { AuthModule } from './auth/auth.module';
+import { TokenEntity } from './auth/entities/token.entity';
+import { EmailModule } from './email/email.module';
 
 @Module({
   imports: [
     ConfigModule.forRoot(),
-    UsersModule,
     TypeOrmModule.forRoot({
       type: 'postgres',
       host: process.env.POSTGRES_HOST,
@@ -20,11 +21,13 @@ import { AuthModule } from './auth/auth.module';
       username: process.env.POSTGRES_USER,
       password: process.env.POSTGRES_PASSWORD,
       database: process.env.POSTGRES_DB,
-      entities: [UserEntity, PostEntity],
+      entities: [UserEntity, PostEntity, TokenEntity],
       synchronize: true,
     }),
+    UsersModule,
     PostsModule,
     AuthModule,
+    EmailModule,
   ],
   controllers: [AppController],
   providers: [AppService],
