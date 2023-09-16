@@ -1,6 +1,6 @@
 Photo blog app developed with nestJs
 Includes functionality such a:
-- Registration, authentication
+- Registration, authentication, forgot password
 - Creating posts with image and description
 - Getting posts
 
